@@ -44,7 +44,7 @@ The `plots/` directory contains all plots reported in the paper and can be gener
 
 	@inproceedings{huber2024learning_dynamics,
 	  title={Comparing supervised learning dynamics: Deep neural networks match human data efficiency but show a generalisation lag},
-	  author={Huber, Lukas s and Mast, Fred W and Wichmann, Felix A},
+	  author={Huber, Lukas S and Mast, Fred W and Wichmann, Felix A},
 	  booktitle={ICLR 2024 Workshop on Representational Alignment},
 	  year={2024}
 	}
