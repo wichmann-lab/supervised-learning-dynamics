@@ -1,6 +1,6 @@
 # Data and code from "Comparing supervised learning dynamics: Deep neural networks match human data efficiency but show a generalisation lag"
 	
- ![This is an image](https://github.com/wichmann-lab/robustness-development/blob/main/plots/color_signature.png)
+ ![This is an image](https://github.com/wichmann-lab/supervised-learning-dynamics/blob/main/plots/color_signature.png)
 	
 This repository contains data and code from the paper [Comparing supervised learning dynamics: Deep neural networks match human data efficiency but show a generalisation lag](https://openreview.net/pdf?id=yb9LLnUdqU) that appeared at the ICLR 2024 Workshop on [Representational Alignment (Re-Align)](https://representational-alignment.github.io/#cfp). In the presented study we designed a constrained learning environment with aligned learning conditions to provide a side-by-side comparison of supervised representation learning in humans and various classic CNNs and state-of-the-art (SOTA) deep learning models. Our findings indicate that, under matched learning conditions, DNNs demonstrate a level of data efficiency comparable to human learners, challenging some prevailing assumptions in the field. However, comparisons across the entire learning process also reveal representational differences: while DNNs' learning is characterized by a pronounced generalisation lag, humans appear to immediately acquire generalizable representations without a preliminary phase of learning training set-specific information that is only later transferred to novel data.
 	
