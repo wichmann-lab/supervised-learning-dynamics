@@ -250,12 +250,12 @@ def plot_gen_lag(dict, poster=False):
     human_lag = dict['Humans']['lag']
     ax.plot([0.804, 0.9], [human_lag, human_lag], color=dict['Humans']['color'], linewidth=5, label='Humans')
 
-    plt.annotate("ViT\n(86.6M)", (0.822, .165), textcoords="offset points", xytext=(0,-16), size=anotate_size)
-    plt.annotate('EfficientNet\n(54.1M)', (0.85, .268), textcoords="offset points", xytext=(0,-16), size=anotate_size)
-    plt.annotate("ConvNeXt\n(88.6M)", (0.82, .058), textcoords="offset points", xytext=(0,-16), size=anotate_size)
-    plt.annotate("AlexNet\n(81.1M)", (0.527, 0.11), textcoords="offset points", xytext=(0,-16), size=anotate_size)
-    plt.annotate("ResNet-50\n(25.6M)", (0.64, .252), textcoords="offset points", xytext=(0,-16), size=anotate_size)
-    plt.annotate("VGG-16\n(138.4M)", (0.665, .115), textcoords="offset points", xytext=(0,-16), size=anotate_size)
+    plt.annotate("ViT\n(86.6M)", (0.822, .17), textcoords="offset points", xytext=(0,-16), size=anotate_size)
+    plt.annotate('EfficientNet\n(54.1M)', (0.85, .274), textcoords="offset points", xytext=(0,-16), size=anotate_size)
+    plt.annotate("ConvNeXt\n(88.6M)", (0.84, .07), textcoords="offset points", xytext=(0,-16), size=anotate_size)
+    plt.annotate("AlexNet\n(81.1M)", (0.56, 0.144), textcoords="offset points", xytext=(0,-16), size=anotate_size)
+    plt.annotate("ResNet-50\n(25.6M)", (0.648, .241), textcoords="offset points", xytext=(0,-16), size=anotate_size)
+    plt.annotate("VGG-16\n(138.4M)", (0.72, .132), textcoords="offset points", xytext=(0,-16), size=anotate_size)
     plt.annotate("Humans", (0.8, .006), textcoords="offset points", xytext=(0,-16), size=anotate_size)
 
     if poster:
@@ -399,7 +399,7 @@ def plot_delta_test(dict, dict_epochs):
     # Plotting setup
     fig, ax = plt.subplots(figsize=(4, 2.5))
 
-    ax.set_ylabel('Delta to Human\nTest Accuracy', fontsize=10)
+    ax.set_ylabel('Delta Test Accuracy\n(Humans minus Models)', fontsize=10)
 
     # add a line at 0
     ax.axhline(0, color='black', linestyle='-', linewidth=0.8)
@@ -424,8 +424,8 @@ def plot_delta_test(dict, dict_epochs):
             jitter = random.uniform(-0.13, 0.13)  # Add jitter to x-coordinate
             jitter_y = random.uniform(-0.015, 0.015)
             model_index = model_indices[model] + jitter  # Get numeric index and add jitter
-            ax.plot([model_index+jitter], [d], 'o', color='gray', alpha=0.8, markersize=5)
-            ax.text(model_index + jitter, d, str(e), ha='center', va='center', fontsize=5)
+            ax.plot([model_index+jitter], [d], 'o', color='gray', alpha=0.8, markersize=8)
+            ax.text(model_index + jitter, d, str(e), ha='center', va='center', fontsize=8)
 
 
     # change the keys in model_indices to the full model names except humans
@@ -445,3 +445,47 @@ def plot_delta_test(dict, dict_epochs):
     plt.grid(False)
     plt.savefig(c.PATH_PLOTS + 'delta_test/delta_test.png', dpi=300)
     plt.close()
+
+def plot_data_efficiency(dict):
+
+    #plot data efficiency from dict
+    fig, ax = plt.subplots(figsize=(8, 4.5))
+
+    # Add a horizontal line at 0 
+    ax.axhline(0, xmin=0, xmax=0.96, color='gray', linestyle=':', linewidth=1.5)
+
+    # Plot the data efficiency for each model as line plot and markers (y-axis) over epochs (x-axis)
+    for model, eff in dict.items():
+        ax.plot(eff, label=model, color=c.CLRS[model], marker=c.MRKS[model], markersize=8, linewidth=2)
+    
+    # create legend based on c.MODELS_DICT
+    custom_lines = [Line2D([0], [0], color=c.CLRS[model], marker=c.MRKS[model],
+                           markersize=8, label=c.MODELS_DICT[model]) for model in c.MODELS_DICT.keys()]
+    ax.legend(handles=custom_lines, loc='upper right', fontsize=14, ncol=1)
+
+    plt.xlabel('Epoch', fontsize=18)
+    plt.ylabel('Test Acc. gain per\nTraining Image', fontsize=18)
+    plt.ylim(-0.005, 0.022)
+ 
+    # Set the width of the axes lines
+    ax.spines['bottom'].set_linewidth(2)
+    ax.spines['left'].set_linewidth(2)
+    plt.tick_params(axis='both', which='major', width=2) 
+
+    # Only plot y-ticks at -0.005, 0, 0.005, 0.01, 0.015, 0.02
+    plt.yticks(np.arange(-0.005, 0.025, 0.005), fontsize=16)
+
+    # x tick labels should be from 1 to 6
+    plt.xticks(np.arange(6), np.arange(1, 7), fontsize=16)
+
+    plt.yticks(fontsize=16)
+    plt.xticks(fontsize=16)
+    plt.tight_layout()
+    sns.despine(trim=True)
+    plt.grid(False)
+    plt.savefig(c.PATH_PLOTS + 'data_efficiency/data_efficiency.png', dpi=300)
+    plt.close()
+
+    
+
+    

@@ -34,9 +34,6 @@ for model in c.MODELS:
     # get model mean and sd per epoch
     model_train_mean_sd, model_test_mean_sd = a.mean_accuracy_per_epoch(model_train_sum,
                                                                         model_test_sum)
-    
-    print(model)
-    print('model_test_mean_sd', model_test_mean_sd)
 
     #plot train and test accuracy
     p.plot_performance(c.PATH_PLOTS + 'performance/' + 'performance_' + model + '.png',

@@ -1,3 +1,10 @@
 **/.DS_Store
 analysis/test.py
 analysis/error_consistency.py
+analysis/confusion.py
+analysis/delta_test.py
+analysis/test.py
+dnns/vit
+plots/confusion
+plots/mds_confusion
+plots/delta_test

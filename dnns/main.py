@@ -149,7 +149,7 @@ def main (model_name='vgg16',
     prediction_file.close()
 
 if __name__ == '__main__':
-    architectures = ['resnet50', 'vgg16', 'alexnet', 'efficientnet']
+    architectures = ['vgg16']
     for model in architectures:
         main(model_name=model,
             n_epochs=6, n_runs=20,

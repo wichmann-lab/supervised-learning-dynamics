@@ -56,12 +56,10 @@ for model in c.MODELS:
     j = a.get_first_above_chance_epoch(model_train_mean_sd, ci_upper)
     k = a.get_epoch_test_accuracy_decreases(model_test_mean_sd)
 
-    if model == 'efficientnet':
-        k = 5
 
-    # print(model)
-    # print('test accs\n', model_test_mean_sd['Test'][(j-1):k])
-    # print('devided by ', (len(range((j-1),k))))
+    print(model)
+    print('test accs\n', model_test_mean_sd['Test'][(j-1):k])
+    print('devided by ', (len(range((j-1),k))))
 
     # calculate generalisation lag
     gen_lag_model = ((model_train_mean_sd['Train'][(j-1):k] - model_test_mean_sd['Test'][(j-1):k]).sum())/(len(range((j-1),k)))
@@ -70,7 +68,7 @@ for model in c.MODELS:
     models_data[c.MODELS_DICT_PARAM[model]]['lag'] = gen_lag_model
     models_data[c.MODELS_DICT_PARAM[model]]['epochs'] = (len(range((j-1),k)))
 
-p.plot_gen_lag(models_data, poster=True)
+p.plot_gen_lag(models_data, poster=False)
 
 #print each key and value in models_data
 

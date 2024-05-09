@@ -6,6 +6,12 @@ import utils.helper as h
 CLR_MOVING_AVRG = ['#fcc5c0', '#dd3497', '#49006a']
 CLR_MODELS = ['#ffc966', '#66b2b2']
 
+CLRS = {'resnet50': '#66b2b2', 'alexnet': '#66b2b2', 'vgg16': '#66b2b2',
+              'vit': '#ffc966', 'convnext': '#ffc966', 'efficientnet': '#ffc966',
+              'human': '#dd3497'}
+
+MRKS = {'resnet50': 'o', 'alexnet': 'p', 'human': 's', 'vgg16': '8', 'vit': '>', 'convnext': '<', 'efficientnet': 'v'}
+
 
 ######Models######
 MODELS = ['resnet50', 'alexnet', 'vgg16', 'vit', 'convnext', 'efficientnet']
