@@ -41,10 +41,10 @@ The `dnns/dataset` directory contains the training dataset as well as six differ
 The `plots/` directory contains all plots reported in the paper and can be generated using the code from the `analysis/` directory.
 	
 ## citation
-	
-@article{huber2022developmental,
-	title={The developmental trajectory of object recognition robustness: children are like small adults but unlike big deep neural networks},
-	author={Huber, Lukas S and Geirhos, Robert and Wichmann, Felix A},
-	journal={arXiv preprint arXiv:2205.10144},
-	year={2022}
-    }
+
+@inproceedings{huber2024learning_dynamics,
+  title={Comparing supervised learning dynamics: Deep neural networks match human data efficiency but show a generalisation lag},
+  author={Huber, Lukas s and Mast, Fred W and Wichmann, Felix A},
+  booktitle={ICLR 2024 Workshop on Representational Alignment},
+  year={2024}
+}
